@@ -4,6 +4,7 @@
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `poisons`;
 DROP TABLE IF EXISTS `admins`;
+DROP TABLE IF EXISTS `purchase_history`;
 
 -- Create the users table
 CREATE TABLE `users` (
@@ -47,3 +48,13 @@ CREATE TABLE `admins` (
 -- Insert one admin user into the admins table with MD5 hashed password
 INSERT INTO `admins` (`username`, `password`)
 VALUES ('admin', MD5('admin'));
+
+-- Create purchase history table
+CREATE TABLE purchase_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    quantity INT,
+    purchase_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    amount_paid DECIMAL(10,2)
+);

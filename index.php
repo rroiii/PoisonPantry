@@ -70,7 +70,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         echo '<div class="card-body d-flex flex-column">'; // Menggunakan 'd-flex flex-column'
         echo '<h5 class="card-title-center">' . htmlspecialchars($product['name']) . '</h5>';
         echo '<p class="card-text-center">Price: ' . htmlspecialchars($product['pricess']) . '</p>';
-        echo '<a href="#" class="btn btn-primary mt-auto" style="background-color: #EC008C;">Buy</a>'; // 'mt-auto' mendorong tombol ke bawah
+        echo '<a href="buy.php?id=' . $product['id'] . '" class="btn btn-primary mt-auto" style="background-color: #EC008C;">Buy</a>'; // 'mt-auto' mendorong tombol ke bawah
         echo '</div>';
         echo '</div>';
         echo '</div>';
