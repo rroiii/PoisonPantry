@@ -2,6 +2,21 @@
 // Sertakan file konfigurasi database
 require_once 'config.php';
 
+// Cek jika user sudah login (berdasarkan keberadaan cookie)
+$loggedIn = isset($_COOKIE['login']);
+
+if(isset($_COOKIE['login'])){
+    header('Location: index.php'); // Redirect kembali ke index.php
+    exit();
+}
+
+// Logika untuk logout
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    setcookie('login', '', time() - 3600, "/"); // Menghapus cookie
+    header('Location: index.php'); // Redirect kembali ke index.php
+    exit();
+}
+
 // Cek jika form login disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
@@ -45,6 +60,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php">Poison Pantry</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                <?php if ($loggedIn): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.php">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?action=logout">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <h2>Login</h2>
         <form action="login.php" method="post">
@@ -58,6 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        <p class="text">Don't have an account yet?</P>
+        <a class="nav-link" href="register.php">Register</a>
     </div>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->

@@ -18,9 +18,18 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     <title>Welcome to our World!</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add CSS here for background image */
+        body {
+            background-image: url('img/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Optional: for fixed background image */
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
         <a class="navbar-brand" href="index.php">Poison Pantry</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
@@ -54,24 +63,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     $result = mysqli_query($koneksi, $query);
 
     while ($product = mysqli_fetch_assoc($result)) {
-        $imagePath = 'img/' . $product['name'] . '.jpg';
-        echo '<div class="col-md-3 mb-4">';
-        echo '<div class="card">';
-        if (file_exists($imagePath)) {
-            echo '<img src="' . $imagePath . '" alt="' . $product['name'] . '" class="card-img-top">';
-        } else {
-            echo '<p>Image not found: ' . $imagePath . '</p>';
-        }
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">' . $product['name'] . '</h5>';
-        echo '<p class="card-text">Price: ' . $product['pricess'] . '</p>';
-           // Periksa jika pengguna sudah login
-           if ($loggedIn) {
-            echo '<a href="#" class="btn btn-primary">Buy</a>';
-        } else {
-            echo '<button onclick="promptLogin()" class="btn btn-primary">Buy</button>';
-        }
-
+        echo '<div class="col-md-3 d-flex align-items-stretch mb-4">'; // Menggunakan 'd-flex align-items-stretch'
+        echo '<div class="card" style="background-color: #000000;">'; // Kartu produk
+        // Pastikan semua gambar memiliki ukuran yang sama atau kelas yang membuatnya responsif
+        echo '<img class="card-img-top" src="img/' . $product['name'] . '.jpg" alt="' . htmlspecialchars($product['name']) . '" style="width: 100%; height: auto;">';
+        echo '<div class="card-body d-flex flex-column">'; // Menggunakan 'd-flex flex-column'
+        echo '<h5 class="card-title-center">' . htmlspecialchars($product['name']) . '</h5>';
+        echo '<p class="card-text-center">Price: ' . htmlspecialchars($product['pricess']) . '</p>';
+        echo '<a href="#" class="btn btn-primary mt-auto" style="background-color: #EC008C;">Buy</a>'; // 'mt-auto' mendorong tombol ke bawah
         echo '</div>';
         echo '</div>';
         echo '</div>';
