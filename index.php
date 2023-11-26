@@ -36,6 +36,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About</a>
+                    </li>
                 <?php if ($loggedIn): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="profile.php">Profile</a>
