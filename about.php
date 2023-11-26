@@ -1,3 +1,14 @@
+<?php
+// Cek jika user sudah login (berdasarkan keberadaan cookie)
+$loggedIn = isset($_COOKIE['login']);
+
+// Logika untuk logout
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    setcookie('login', '', time() - 3600, "/"); // Menghapus cookie
+    header('Location: index.php'); // Redirect kembali ke index.php
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +30,29 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
         <a class="navbar-brand" href="index.php">Poison Pantry</a>
-        <!-- Navbar content -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About</a>
+                    </li>
+                <?php if ($loggedIn): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.php">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?action=logout">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
     </nav>
-
     <div class="container mt-5">
         <h2 class="text-center mb-4">About PoisonPantry.com</h2>
         <p class="text-center">
