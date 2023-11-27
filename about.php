@@ -60,7 +60,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         </p>
         <!-- Download Brosur Link -->
         <div class="text-center mt-4">
-            <a href="download_brosur.php?brosur=our_potions" class="btn btn-primary">Download Our Potions Brosur</a>
+            <a href="download_brosur.php?brosur=brosur.pdf" class="btn btn-primary">Download Our Potions Brosur</a>
         </div>
     </div>
 

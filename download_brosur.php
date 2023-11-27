@@ -28,5 +28,7 @@ if (file_exists($brosurPath)) {
     exit;
 } else {
     echo "Maaf, file tidak ditemukan.";
+    // Redirect ke halaman utama atau dashboard
+    header('Location: about.php');
 }
 ?>
