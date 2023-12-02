@@ -23,8 +23,7 @@ if (file_exists($brosurPath)) {
 
     header('Content-Disposition: attachment; filename="' . basename($brosurPath) . '"');
     readfile($brosurPath);
-    // Redirect ke halaman utama atau dashboard
-    header('Location: about.php');
+    echo "file ditemukan.";
     exit;
 } else {
     echo "Maaf, file tidak ditemukan.";

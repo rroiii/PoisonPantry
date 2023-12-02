@@ -1,0 +1,31 @@
+.card {
+    background-color: #000000;
+}
+.btn-primary {
+    background-color: #C852E2;
+    border-color: #C852E2;
+}
+.btn-primary:hover {
+    background-color: #DA007C;
+    border-color: #DA007C;
+}
+/* Custom class for centered text in card */
+.card-title-center, .card-text-center {
+    text-align: center;
+}
+@font-face {
+    font-family: 'Witches Diary';
+    src: url('fonts/Witches Diary.woff2') format('woff2'), /* Ganti dengan path yang benar */
+        url('fonts/Witches Diary.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mystical-journey {
+    font-size: 80px;
+    font-family: 'Witches Diary', cursive; /* Ganti font fallback sesuai kebutuhan */
+}
+.mystical-journey2 {
+    font-size: 40px;
+    font-family: 'Witches Diary', cursive; /* Ganti font fallback sesuai kebutuhan */
+}

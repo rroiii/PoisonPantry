@@ -51,49 +51,61 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     <title>User Profile</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF; /* Set text color to white */
+            font-family: 'Open Sans', sans-serif; /* Custom Font */
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">Poison Pantry</a>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+        <a class="navbar-brand mystical-journey2" href="index.php">Poison Pantry</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="about.php">About</a>
                     </li>
                 <?php if ($loggedIn): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile.php">Profile</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?action=logout">Logout</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="?action=logout">Logout</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="login.php">Login</a>
                     </li>
                 <?php endif; ?>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <h1>User Profile</h1>
-        <p>Username: <?php echo htmlspecialchars($username); ?></p>
-        <p>Balance: <?php echo htmlspecialchars($balance); ?></p>
+        <h1 style="color: #FFFFFF; font-size:20px;">User Profile</h1>
+        <p style="color: #FFFFFF; font-size:20px;">Username: <?php echo htmlspecialchars($username); ?></p>
+        <p style="color: #FFFFFF; font-size:20px;">Balance: <?php echo htmlspecialchars($balance); ?></p>
 
-        <h3>Purchase History</h3>
+        <h3 style="color: #FFFFFF; font-size:20px;">Purchase History</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Amount Paid</th>
-                    <th>Purchase Time</th>
+                    <th style="color: #FFFFFF; font-size:20px;">Product Name</th>
+                    <th style="color: #FFFFFF; font-size:20px;">Quantity</th>
+                    <th style="color: #FFFFFF; font-size:20px;">Amount Paid</th>
+                    <th style="color: #FFFFFF; font-size:20px;">Purchase Time</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: #FFFFFF; font-size:20px;">
                 <?php foreach ($purchaseHistory as $history): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($history['name']); ?></td>

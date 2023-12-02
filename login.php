@@ -58,35 +58,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF; /* Set text color to white */
+            font-family: 'Open Sans', sans-serif; /* Custom Font */
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">Poison Pantry</a>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+        <a class="navbar-brand mystical-journey2" href="index.php">Poison Pantry</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="about.php">About</a>
                     </li>
                 <?php if ($loggedIn): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile.php">Profile</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?action=logout">Logout</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="?action=logout">Logout</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="login.php">Login</a>
                     </li>
                 <?php endif; ?>
             </ul>
         </div>
     </nav>
 
-    <div class="container">
+
+    <div class="container" style="padding-top:10%">
         <h2>Login</h2>
         <form action="login.php" method="post">
             <div class="form-group">
@@ -98,9 +111,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
+            <p class="mt-3">
+            Don't have an account yet? <a href="register.php">Register</a>
+        </p>
         </form>
-        <p class="text">Don't have an account yet?</P>
-        <a class="nav-link" href="register.php">Register</a>
     </div>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->

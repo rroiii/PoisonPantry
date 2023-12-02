@@ -1,6 +1,7 @@
 <?php
 require_once 'config.php'; // Sertakan file konfigurasi database
-
+// Cek jika user sudah login (berdasarkan keberadaan cookie)
+$loggedIn = isset($_COOKIE['login']);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
     $password = mysqli_real_escape_string($koneksi, $_POST['password']);
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Setelah registrasi berhasil, buat cookie untuk login otomatis
             $cookieData = serialize(array('username' => $username, 'is_admin' => 0));
             $encodedCookieData = base64_encode($cookieData);
-            setcookie('userLogin', $encodedCookieData, time() + (86400 * 30), "/");
+            setcookie('login', $encodedCookieData, time() + (86400 * 30), "/");
 
             // Redirect ke halaman utama atau dashboard
             header('Location: index.php');
@@ -38,9 +39,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Register</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF; /* Set text color to white */
+            font-family: 'Open Sans', sans-serif; /* Custom Font */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+        <a class="navbar-brand mystical-journey2" href="index.php">Poison Pantry</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="about.php">About</a>
+                    </li>
+                <?php if ($loggedIn): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="profile.php">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="?action=logout">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #FFFFFF; font-size:20px;"  href="login.php">Login</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top:10%">
         <h2>Register</h2>
         <form action="register.php" method="post">
             <div class="form-group">
